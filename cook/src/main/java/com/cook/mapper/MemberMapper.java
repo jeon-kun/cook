@@ -1,12 +1,12 @@
-package com.cook.service;
+package com.cook.mapper;
 
 import com.cook.model.MemberVO;
 
-public interface MemberService {
+public interface MemberMapper {
 	
 	//회원가입
 	public void memberInsert(MemberVO vo);
-	//이메일체크
+	
 	public int emailCheck(String email);
 
 }
