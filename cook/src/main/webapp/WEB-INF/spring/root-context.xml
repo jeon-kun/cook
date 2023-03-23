@@ -48,5 +48,5 @@
     <mybatis-spring:scan base-package="com.cook.mapper"/>
     <context:component-scan base-package="com.cook.model"></context:component-scan>
     <context:component-scan base-package="com.cook.service"></context:component-scan>
-		
+	<context:component-scan base-package="com.cook.util"></context:component-scan>
 </beans>

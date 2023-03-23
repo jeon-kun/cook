@@ -20,5 +20,9 @@ public class MemberServiceImpl implements MemberService {
 	public int emailCheck(String email) {
 		return memberMapper.emailCheck(email);
 	}
+	@Override
+	public MemberVO memberLogin(MemberVO vo) {
+		return memberMapper.memberLogin(vo);
+	}
 
 }

@@ -8,5 +8,7 @@ public interface MemberMapper {
 	public void memberInsert(MemberVO vo);
 	
 	public int emailCheck(String email);
+	
+	public MemberVO memberLogin(MemberVO vo);
 
 }

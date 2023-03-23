@@ -1,12 +1,26 @@
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
+<style>
+ .video-container {
+    margin-bottom: 1rem;
+    display: block;
+    width: 35px;
+    height: 250px;
+    text-align: center;
+  }
+  .row.justify-content-center {
+    text-align: center;
+  }
+</style>
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Creative - Start Bootstrap Theme</title>
+        <title>Yutube - Start Bootstrap Theme</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap Icons-->
@@ -21,21 +35,28 @@
     </head>
     <body id="page-top">
 		<%@include file="nav.jsp" %>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container px-4 px-lg-5 h-100">
-                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">About Cook</h1>
-                        <hr class="divider" />
-                    </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5">요리에 대해 알려드립니다.</p>
-                        <a class="btn btn-primary btn-xl" href="/chat">S T A R T</a>
-                    </div>
-                </div>
-            </div>
-        </header>
+		 <header class="masthead">
+<% List<String> videoIds = (List<String>) request.getAttribute("videoIds"); %>
+    <% if (videoIds == null || videoIds.isEmpty()) { %>
+      <p>No results found.</p>
+    <% } else { %>
+      <div> <!-- 감싸는 div 태그 추가 -->
+<div class="row justify-content-center"> <!-- 감싸는 div 태그 추가 -->
+<% for (int i = 0; i < videoIds.size() && i < 12; i++) { %>
+    <div class="col-lg-3 col-md-6 mb-4"> <!-- col 클래스 추가 -->
+        <div class="video-container">
+            <iframe width="350" height="250" src="https://www.youtube.com/embed/<%= videoIds.get(i) %>
+            " frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+<% if ((i+1) % 4 == 0) { %> <!-- 한 줄에 4개씩 보이도록 처리 -->
+    </div><div class="row justify-content-center">
+<% } %>
+<% } %>
+</div> <!-- 감싸는 div 태그 닫기 -->
+      </div>
+    <% } %>
+      </header>
         <%@include file="foot.jsp" %>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

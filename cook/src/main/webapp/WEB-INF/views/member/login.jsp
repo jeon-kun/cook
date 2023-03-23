@@ -16,7 +16,11 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
+	<script
+	  src="https://code.jquery.com/jquery-3.4.1.js"
+	  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	  crossorigin="anonymous">
+	</script>
     <!-- Custom styles for this template-->
     <link href="/resources/style/css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -41,40 +45,40 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                     </div>
-                                    <form class="user">
+                                    
+                                    <form id="login_form" method="post">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="email" placeholder="이메일">
+                                                id="email" name ="email"placeholder="이메일">
                                         </div>
                                         <div class="form-group">
-                                            <input type="pass" class="form-control form-control-user"
-                                                id="pass" placeholder="패스워드">
+                                            <input type="password" class="form-control form-control-user"
+                                                id="pass" name="pass" placeholder="패스워드">
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
+                                        <c:if test = "${result == 0 }">
+                                        <div class = "login_warn">이메일 또는 비밀번호를 잘못 입력하셨습니다.</div>
+                                        </c:if>
+                                        
+                                        <div class="btn btn-primary btn-user btn-block" id="login_button">
+                                            로그인
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+
                                         <hr>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                            <i class="fab fa-google fa-fw"></i> 구글 로그인
                                         </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="forgot-password.html">비밀번호 찾기</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="/member/join">Create an Account!</a>
+                                        <a class="small" href="/member/join">계정생성 하기</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                       
                     </div>
                 </div>
 
@@ -83,7 +87,16 @@
         </div>
 
     </div>
-
+	<script>
+ 
+    /* 로그인 버튼 클릭 메서드 */
+    	$("#login_button").click(function(){
+            /* 로그인 메서드 서버 요청 */
+            $("#login_form").attr("action", "/member/login");
+            $("#login_form").submit();
+   	 });
+ 
+	</script>
     <!-- Bootstrap core JavaScript-->
     <script src="/resources/style/vendor/jquery/jquery.min.js"></script>
     <script src="/resources/style/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

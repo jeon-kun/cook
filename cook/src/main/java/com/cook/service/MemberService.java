@@ -8,5 +8,7 @@ public interface MemberService {
 	public void memberInsert(MemberVO vo);
 	//이메일체크
 	public int emailCheck(String email);
+	//로그인
+	public MemberVO memberLogin(MemberVO vo);
 
 }
