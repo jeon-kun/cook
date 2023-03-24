@@ -44,7 +44,7 @@
                 
                         <li class="nav-item"><a class="nav-link" href="#">레시피</a></li>
                         <li class="nav-item"><a class="nav-link" href="/search?q=어남선생">YouTube</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
                     </ul>
                 </div>
             </div>
